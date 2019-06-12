@@ -10,15 +10,19 @@ class ship{
   show(){
     push();
     translate(this.x,this.y);
+    rect(this.side/2-2,-this.side_slant/2+8,2,17);
+    rect(-this.side/2-2,-this.side_slant/2+8,2,17);    
     triangle(0,-this.side_slant/2,this.side/2,this.side_slant/2,-this.side/2,this.side_slant/2);
     pop();
 
     push();
     for(let i=0;i<this.bullets.length;i++){
       stroke(255,0,0)
-      fill(255)
+      fill(255,0,0)
       this.bullets[i].update()
-      ellipse(this.bullets[i].x,this.bullets[i].y,20);
+      rectMode(CENTER);
+      rect(this.bullets[i].x,this.bullets[i].y,2,20)
+      // ellipse(this.bullets[i].x,this.bullets[i].y,20);
       if(this.bullets[0].y<0){
         this.bullets.shift()
       }

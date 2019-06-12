@@ -1,5 +1,6 @@
 let hit;
 let s;
+let bullet_number=10;
 let high_score=0;
 let cool_down=0;
 let reset;
@@ -7,14 +8,15 @@ let score=0;
 let asteroids=[];
 let c=0;
 let death_nt=3;
-let n=5;
+let n=8;
 let heart;
+let rocket_img;
 
 function setup(){
   createCanvas(600,600);
   s=new ship();
   heart= loadImage("../heart.jpg");
-  heart.resize(3,3);
+  rocket_img=loadImage("../rocket.jpg")
   reset=createButton("PRESS TO RESTART");
   reset.mousePressed(renew)
   for(let i=0;i<n;i++){
@@ -29,6 +31,13 @@ function draw(){
     push();
     scale(0.1);
     image(heart,20+400*m,20);
+    pop();
+  }
+
+
+  for(let n=0;n<bullet_number;n++){
+    push();
+    image(rocket_img,-14,(240+15*n),60,20);
     pop();
   }
   // if(keyIsDown(UP_ARROW)){
@@ -93,6 +102,7 @@ function draw(){
     if(hit){
       asteroids.splice(i,1);
       score+=100;
+      bullet_number+=2;
       // c+=1;
     }
   }
@@ -119,7 +129,10 @@ function draw(){
 
 function keyPressed(){
   if(keyCode===32){
-    s.shoot();
+    if(bullet_number>0){
+      s.shoot();
+      bullet_number-=1;
+    }
   }
 }
 
@@ -132,5 +145,6 @@ function renew(){
   s=new ship();
   death_nt=3;
   score=0;
+  bullet_number=10;
   loop();
 }
