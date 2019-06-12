@@ -33,5 +33,26 @@ class ship{
     pop();
   }
 
+  check_collision(rock){
+    for(let i=0;i<this.bullets.length;i++){
+        if(this.bullets[i].check(rock)){
+          this.bullets.splice(i,1);
+          return(1);
+          break;
+      }
+    }
 
+  }
+
+
+
+  check_life_nt(rock){
+    let d=dist(rock.x+15,rock.y+5,this.x,this.y);
+    if(d<14){
+      return(true);
+    }
+    else{
+      return(false);
+    }
+  }
 }
