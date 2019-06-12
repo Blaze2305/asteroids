@@ -88,12 +88,12 @@ function draw(){
   }
 
 
-  for(let i=0;i<n-c;i++){
+  for(let i=0;i<asteroids.length;i++){
     hit=s.check_collision(asteroids[i]);
     if(hit){
       asteroids.splice(i,1);
       score+=100;
-      c+=1;
+      // c+=1;
     }
   }
 
@@ -130,6 +130,7 @@ function renew(){
     asteroids[i]=new space_rock(floor(random(width)));
   }
   s=new ship();
+  death_nt=3;
   score=0;
   loop();
 }

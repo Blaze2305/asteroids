@@ -7,7 +7,7 @@ class space_rock{
 
   show(){
     push();
-    ellipse(this.x,this.y,30,10);
+    ellipse(this.x,this.y,30,30);
     pop();
   }
 

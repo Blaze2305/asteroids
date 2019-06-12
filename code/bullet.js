@@ -11,9 +11,8 @@ class rocket{
 
   check(rock){
     if(rock){
-
-      let d=dist(this.x,this.y,rock.x+15,rock.y+5);
-      if(d<30){
+      let d=dist(this.x,this.y,rock.x,rock.y);
+      if(d<15){
         return(true);
       }
       else{

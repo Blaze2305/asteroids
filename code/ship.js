@@ -47,7 +47,9 @@ class ship{
 
 
   check_life_nt(rock){
-    let d=dist(rock.x+15,rock.y+5,this.x,this.y);
+    let d=dist(rock.x,rock.y,this.x,this.y);
+    // stroke(255);
+    // line(this.x,this.y,rock.x,rock.y)
     if(d<14){
       return(true);
     }
